@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Student Hub | Smart Resource Portal</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* modern header with gradient */
+    .main-header {
+      background: linear-gradient(135deg, #0a1c2a 0%, #0f2b3d 50%, #1a3a4f 100%);
+      padding: 1.5rem 2rem 1.8rem;
+      text-align: center;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(2,132,199,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .main-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #bae6fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+    }
+
+    .logo span {
+      font-weight: 700;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, #0284c7, #0f2b3d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover {
+      color: #0284c7;
+      border-bottom-color: #0284c7;
+    }
+
+    /* Enhanced Google-style search wrapper */
+    .search-section {
+      background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+      padding: 2rem 1rem 1.8rem;
+      margin: 1rem 1.5rem 0.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .google-search-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .google-search-container {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 56px;
+      padding: 6px 20px;
+      gap: 14px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .google-search-container:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .google-search-container:focus-within {
+      border-color: #0284c7;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .search-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #0284c7;
+    }
+
+    .google-search-container input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      background: transparent;
+      color: #0f172a;
+      padding: 12px 0;
+      font-weight: 500;
+    }
+
+    .google-search-container input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .search-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .clear-btn, .voice-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .clear-btn:hover, .voice-btn:hover {
+      background: #f1f5f9;
+      transform: scale(1.05);
+    }
+
+    .clear-btn svg, .voice-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #64748b;
+    }
+
+    .divider {
+      width: 1px;
+      height: 28px;
+      background: #e2e8f0;
+    }
+
+    /* Fast Search Suggestions */
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      margin-top: 12px;
+      z-index: 1001;
+      max-height: 380px;
+      overflow-y: auto;
+      display: none;
+      backdrop-filter: blur(2px);
+      border: 1px solid #eef2ff;
+    }
+
+    .search-suggestions.active {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .suggestion-item {
+      padding: 12px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.15s;
+      font-size: 14px;
+      color: #1e293b;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .suggestion-item:hover {
+      background: #f8fafc;
+      padding-left: 24px;
+    }
+
+    .suggestion-icon {
+      color: #0284c7;
+      font-size: 16px;
+    }
+
+    .suggestion-text {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    .suggestion-category {
+      font-size: 11px;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* filter pills - improved */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1.5rem auto 0.5rem;
+      max-width: 1000px;
+      padding: 0 1rem;
+    }
+
+    .filter-pill {
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 0.6rem 1.4rem;
+      border-radius: 48px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s;
+      color: #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .filter-pill i { font-size: 0.85rem; }
+
+    .filter-pill.active, .filter-pill:hover {
+      background: #0284c7;
+      border-color: #0284c7;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(2, 132, 199, 0.25);
+    }
+
+    .results-info {
+      max-width: 1200px;
+      margin: 1.2rem auto 0;
+      padding: 0 1.5rem;
+      font-size: 0.9rem;
+      color: #475569;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .results-badge {
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #0284c7;
+    }
+
+    /* resource grid - modern cards */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      overflow: hidden;
+      animation: fadeInUp 0.4s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .resource-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.12);
+      border-color: #cbd5e1;
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #fafcff 0%, #ffffff 100%);
+      padding: 1.2rem 1.5rem;
+      border-bottom: 2px solid #eef2ff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-header i {
+      font-size: 1.6rem;
+      color: #0284c7;
+    }
+
+    .card-header h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .card-content {
+      padding: 1.2rem 1.5rem 1.5rem;
+    }
+
+    .card-content ol {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .card-content li {
+      font-size: 0.9rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .card-content li i {
+      font-size: 0.7rem;
+      color: #0284c7;
+      width: 20px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #fde047 0%, #facc15 100%);
+      color: #0f172a;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 2px 6px;
+      margin: -2px 0;
+      display: inline-block;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      background: white;
+      border-radius: 2rem;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2.5rem 2rem 1.8rem;
+      margin-top: 3rem;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      color: #94a3b8;
+      font-size: 1.7rem;
+      transition: all 0.25s;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    .footer-contact {
+      background: #1e293b;
+      padding: 0.7rem 1.6rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+    }
+
+    .footer-contact i {
+      margin-right: 8px;
+      color: #60a5fa;
+    }
+
+    .footer-contact a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      text-align: center;
+    }
+
+    .about-section {
+      max-width: 1000px;
+      margin: 0.5rem auto 0;
+      background: linear-gradient(135deg, #eef2ff, #ffffff);
+      border-radius: 1.8rem;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      border: 1px solid #e0e7ff;
+    }
+
+    @media (max-width: 700px) {
+      nav { flex-direction: column; gap: 1rem; }
+      .resources-grid { padding: 0 1rem; gap: 1.2rem; }
+      .search-section { margin: 1rem 1rem; }
+      .filter-pill { padding: 0.4rem 1rem; font-size: 0.75rem; }
+    }
+
+    /* Loading animation for faster perception */
+    .search-loading {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid #e2e8f0;
+      border-top-color: #0284c7;
+      border-radius: 50%;
+      animation: spin 0.6s linear;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-header">
+  <h1>🎓 Student Hub</h1>
+  <p style="color:#bae6fd; margin-top: 6px; font-weight: 500;">Delhi University — Instant access to syllabus, papers, notes & more</p>
+</div>
+
+<nav>
+  <div class="logo">
+    <!-- logo.svg integration - using external file logo.svg as requested -->
+    <img src="logo.svg" alt="Student Hub Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%230285c7\'/%3E%3Ctext x=\'50\' y=\'72\' font-size=\'44\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ESH%3C/text%3E%3C/svg%3E'">
+    <span>StudyCentral</span>
+  </div>
+  <div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#About">About Us</a></li>
+      <li><a href="#Contact">Contact Us</a></li>
+      <li><a href="signup.html">Sign up</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="about-section" id="About">
+  <p style="font-weight: 500;">🚀 Fast & smart search for question papers, notes, syllabus, assignments, scholarships — all resources at your fingertips.</p>
+</div>
+
+<!-- Enhanced Google-Style Search Section -->
+<div class="search-section">
+  <div class="google-search-wrapper">
+    <div class="google-search-container">
+      <div class="search-icon">
+        <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+      <input type="text" id="googleSearchInput" placeholder="Search instantly: Physics, Linear Algebra, NSP, Vedic Maths, Assignments..." autocomplete="off">
+      <div class="search-loading" id="searchLoading"></div>
+      <div class="search-actions">
+        <button class="clear-btn" id="clearGoogleSearch" style="display: none;">
+          <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="divider"></div>
+        <button class="voice-btn" id="voiceGoogleSearch">
+          <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3c-1.66 0-3 1.34-3 3v6c0 1.66 1.34 3 3 3s3-1.34 3-3V6c0-1.66-1.34-3-3-3zm-1 15.92c-2.83-.48-5-2.94-5-5.92h-2c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2c0 2.98-2.17 5.44-5 5.92z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="search-suggestions" id="searchSuggestions"></div>
+  </div>
+</div>
+
+<!-- filter pills - improved categories -->
+<div class="filter-bar">
+  <button class="filter-pill active" data-filter="all"><i class="fas fa-globe"></i> All Resources</button>
+  <button class="filter-pill" data-filter="pyq"><i class="fas fa-file-alt"></i> Question Papers</button>
+  <button class="filter-pill" data-filter="notes"><i class="fas fa-pen-fancy"></i> Notes</button>
+  <button class="filter-pill" data-filter="syllabus"><i class="fas fa-book-open"></i> Syllabus</button>
+  <button class="filter-pill" data-filter="assignment"><i class="fas fa-tasks"></i> Assignments</button>
+  <button class="filter-pill" data-filter="books"><i class="fas fa-book"></i> Books</button>
+  <button class="filter-pill" data-filter="scholarship"><i class="fas fa-graduation-cap"></i> Scholarships</button>
+</div>
+
+<div class="results-info" id="resultsStats">
+  <i class="fas fa-bolt" style="color:#0284c7;"></i>
+  <span id="statText">⚡ Smart search active — type anything</span>
+  <span class="results-badge" id="resultCountBadge">0 resources</span>
+</div>
+
+<div class="resources-grid" id="resourceGrid"></div>
+
+<!-- Original content backup (preserved) -->
+<div id="originalContentBackup" style="display: none;">
+  <div class="pyq">
+    <h2>Previous Year's Question papers</h2><br><h3>Subjects</h3>
+    <h4>Physics (Electricity and Magnetism)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>Mathematics (Elementary Linear Algebra)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li><li>Paper 7</li><li>Paper 8</li></ol>
+    <h4>Computer (Data Structure using C++)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>GE (Individual and Society)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li><li>Paper 7</li><li>Paper 8</li><li>Paper 9</li></ol>
+    <h4>VAC (Vedic Mathematics-2)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li></ol>
+    <h4>AEC (Hindi-A)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>AEC (Hindi-B)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>SEC (Chemistry Lab)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>GE (Introduction of Indian Constitution)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>VAC (Science and Society)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>VAC (Digital Empowerment)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>AEC (Hindi-C)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+  </div>
+  <div class="notes"><h2>Notes</h2><ol><li>Mathematics</li><li>Physics</li><li>VAC</li><li>Hindi</li><li>Computer</li></ol></div>
+  <div class="syllabus"><h2>Syllabus</h2><ol><li>Mathematics (Elementary Linear Algebra)</li><li>Physics (Electricity and Magnetism)</li><li>VAC (Vedic Mathematics-2)</li><li>Hindi-A</li><li>Computer (Data structure using C++)</li><li>GE (Individual and Society)</li><li>SEC (Chemistry Lab)</li></ol></div>
+  <div class="books"><h2>Books</h2><ol><li>Mathematics</li><li>Physics</li><li>VAC</li><li>Hindi</li><li>Computer</li></ol></div>
+  <div class="asignment"><h2>Assignment</h2><ol><li>Mathematics</li><li>Physics</li><li>VAC</li><li>Hindi</li><li>Computer</li></ol></div>
+  <div class="scholarship"><h2>Scholarship and Loan</h2><ol><li>NSP</li><li>Buddy4study</li><li>Bihar Govt</li><li>DRCC</li><li>PM Vidylaxmi</li><li>Private Bank Loan</li></ol></div>
+</div>
+
+<footer id="Contact">
+  <div class="footer-content">
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    </div>
+    <div class="footer-contact">
+      <i class="fas fa-envelope"></i> 📧 Official: 
+      <a href="mailto:support@studenthub.du.in">support@studenthub.du.in</a>
+    </div>
+    <div class="copyright">
+      All rights reserved © Student Hub — Empowering Delhi University Students
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // FAST & ACCURATE SEARCH ENGINE with precomputed index
+    const backupDiv = document.getElementById('originalContentBackup');
+    const gridContainer = document.getElementById('resourceGrid');
+    const categoryMap = [
+      { class: 'pyq', category: 'pyq', icon: 'fas fa-file-alt', displayName: 'Question Papers' },
+      { class: 'notes', category: 'notes', icon: 'fas fa-pen-fancy', displayName: 'Notes' },
+      { class: 'syllabus', category: 'syllabus', icon: 'fas fa-list-ul', displayName: 'Syllabus' },
+      { class: 'books', category: 'books', icon: 'fas fa-book', displayName: 'Books' },
+      { class: 'asignment', category: 'assignment', icon: 'fas fa-tasks', displayName: 'Assignments' },
+      { class: 'scholarship', category: 'scholarship', icon: 'fas fa-graduation-cap', displayName: 'Scholarships' }
+    ];
+    
+    let allCards = [];
+    let searchIndex = []; // precomputed searchable text for blazing fast search
+    
+    function buildCard(originalElem, categoryId, iconClass, displayName) {
+      const clone = originalElem.cloneNode(true);
+      clone.setAttribute('data-category', categoryId);
+      clone.classList.add('resource-card');
+      
+      const existingH2 = clone.querySelector('h2');
+      if (existingH2) {
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'card-header';
+        const iconSpan = document.createElement('i');
+        iconSpan.className = iconClass;
+        headerDiv.appendChild(iconSpan);
+        const newH2 = document.createElement('h2');
+        newH2.textContent = existingH2.textContent;
+        headerDiv.appendChild(newH2);
+        existingH2.replaceWith(headerDiv);
+      }
+      
+      const childrenArray = Array.from(clone.children);
+      const contentWrapper = document.createElement('div');
+      contentWrapper.className = 'card-content';
+      for (let child of childrenArray) {
+        if (!child.classList || !child.classList.contains('card-header')) {
+          contentWrapper.appendChild(child.cloneNode(true));
+        }
+      }
+      for (let child of childrenArray) {
+        if (!child.classList || !child.classList.contains('card-header')) child.remove();
+      }
+      clone.appendChild(contentWrapper);
+      
+      // Style lists for better UX
+      clone.querySelectorAll('.card-content ol').forEach(ol => {
+        ol.style.listStyle = 'none';
+        ol.style.paddingLeft = '0';
+        ol.style.display = 'flex';
+        ol.style.flexDirection = 'column';
+        ol.style.gap = '6px';
+        Array.from(ol.children).forEach(li => {
+          li.style.display = 'flex';
+          li.style.alignItems = 'center';
+          li.style.gap = '8px';
+          li.style.borderBottom = '1px solid #f1f5f9';
+          li.style.padding = '0.4rem 0';
+          if (!li.querySelector('i.li-icon')) {
+            const liIcon = document.createElement('i');
+            liIcon.className = 'fas fa-chevron-right li-icon';
+            liIcon.style.fontSize = '0.7rem';
+            liIcon.style.color = '#0284c7';
+            li.prepend(liIcon);
+          }
+        });
+      });
+      return clone;
+    }
+    
+    // Build cards and precompute search index for O(1) lookups
+    categoryMap.forEach(({ class: className, category, icon, displayName }) => {
+      const originalElem = backupDiv.querySelector(`.${className}`);
+      if (originalElem) {
+        const card = buildCard(originalElem, category, icon, displayName);
+        gridContainer.appendChild(card);
+        allCards.push(card);
+        // Precompute searchable text (full content lowercase)
+        const searchableText = card.textContent.toLowerCase();
+        searchIndex.push({ card, searchableText, category });
+      }
+    });
+    
+    // DOM elements
+    const searchInput = document.getElementById('googleSearchInput');
+    const clearBtn = document.getElementById('clearGoogleSearch');
+    const voiceBtn = document.getElementById('voiceGoogleSearch');
+    const suggestionsContainer = document.getElementById('searchSuggestions');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const loadingIndicator = document.getElementById('searchLoading');
+    let activeFilter = 'all';
+    let currentSearch = '';
+    let searchTimeout = null;
+    
+    // Smart suggestion database (accurate & fast)
+    const smartSuggestions = [
+      { text: "Physics Electricity and Magnetism", category: "Question Papers" },
+      { text: "Mathematics Linear Algebra notes", category: "Notes" },
+      { text: "Elementary Linear Algebra syllabus", category: "Syllabus" },
+      { text: "Data Structure C++ assignments", category: "Assignments" },
+      { text: "Vedic Mathematics previous papers", category: "Question Papers" },
+      { text: "NSP Scholarship application", category: "Scholarship" },
+      { text: "Chemistry Lab syllabus DU", category: "Syllabus" },
+      { text: "Hindi AEC question papers", category: "Question Papers" },
+      { text: "Computer Science notes", category: "Notes" },
+      { text: "PM Vidylaxmi education loan", category: "Scholarship" },
+      { text: "Digital Empowerment VAC notes", category: "Notes" },
+      { text: "GE Individual and Society papers", category: "Question Papers" }
+    ];
+    
+    function toggleClearButton() {
+      clearBtn.style.display = currentSearch.length > 0 ? 'flex' : 'none';
+    }
+    
+    // Ultra-fast search using precomputed index
+    function performSearch() {
+      if (searchTimeout) clearTimeout(searchTimeout);
+      loadingIndicator.style.display = 'block';
+      
+      searchTimeout = setTimeout(() => {
+        const searchTermLower = currentSearch.toLowerCase().trim();
+        let visibleCount = 0;
+        
+        searchIndex.forEach(({ card, searchableText, category }) => {
+          const matchesFilter = (activeFilter === 'all') || (category === activeFilter);
+          let matchesSearch = true;
+          if (searchTermLower !== '') {
+            // Fast includes check + word boundary awareness for accuracy
+            matchesSearch = searchableText.includes(searchTermLower);
+            // Extra accuracy: check if term matches as whole word context
+            if (!matchesSearch && searchTermLower.length > 2) {
+              const words = searchTermLower.split(/\s+/);
+              matchesSearch = words.some(word => word.length > 2 && searchableText.includes(word));
+            }
+          }
+          
+          if (matchesFilter && matchesSearch) {
+            card.style.display = '';
+            visibleCount++;
+            highlightSearchInCard(card, currentSearch);
+          } else {
+            card.style.display = 'none';
+            removeHighlightsFromCard(card);
+          }
+        });
+        
+        // Update stats UI
+        const statTextSpan = document.getElementById('statText');
+        const badgeSpan = document.getElementById('resultCountBadge');
+        if (visibleCount === 0 && currentSearch !== '') {
+          statTextSpan.innerHTML = '🔍 No matches — try "Physics", "NSP", "syllabus", or "notes"';
+          badgeSpan.textContent = '0 found';
+        } else if (currentSearch === '') {
+          statTextSpan.innerHTML = '⚡ All resources ready — start searching';
+          badgeSpan.textContent = `${visibleCount} total`;
+        } else {
+          statTextSpan.innerHTML = `🎯 Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''} for “${currentSearch}”`;
+          badgeSpan.textContent = `${visibleCount} matches`;
+        }
+        loadingIndicator.style.display = 'none';
+      }, 80); // 80ms debounce for instant feel
+    }
+    
+    function highlightSearchInCard(card, term) {
+      removeHighlightsFromCard(card);
+      if (!term.trim()) return;
+      const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT, {
+        acceptNode: (node) => {
+          if (node.parentElement?.closest('.highlight, script, style')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while(walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => {
+        if (regex.test(node.textContent)) {
+          const span = document.createElement('span');
+          span.innerHTML = node.textContent.replace(regex, match => `<span class="highlight">${match}</span>`);
+          node.parentNode.replaceChild(span, node);
+        }
+      });
+    }
+    
+    function removeHighlightsFromCard(card) {
+      card.querySelectorAll('.highlight').forEach(el => {
+        const parent = el.parentNode;
+        parent.replaceChild(document.createTextNode(el.textContent), el);
+        parent.normalize();
+      });
+    }
+    
+    function showSuggestions() {
+      const query = currentSearch.toLowerCase().trim();
+      if (query === '') {
+        suggestionsContainer.classList.remove('active');
+        return;
+      }
+      const filtered = smartSuggestions.filter(s => s.text.toLowerCase().includes(query)).slice(0, 6);
+      if (filtered.length === 0) {
+        suggestionsContainer.classList.remove('active');
+        return;
+      }
+      suggestionsContainer.innerHTML = filtered.map(item => `
+        <div class="suggestion-item" data-value="${escapeHtml(item.text)}">
+          <div class="suggestion-icon"><i class="fas fa-search"></i></div>
+          <div class="suggestion-text">${escapeHtml(item.text)}</div>
+          <div class="suggestion-category">${item.category}</div>
+        </div>
+      `).join('');
+      document.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('click', () => {
+          searchInput.value = item.getAttribute('data-value');
+          currentSearch = searchInput.value;
+          toggleClearButton();
+          suggestionsContainer.classList.remove('active');
+          performSearch();
+        });
+      });
+      suggestionsContainer.classList.add('active');
+    }
+    
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+    
+    function refreshSearch() {
+      currentSearch = searchInput.value;
+      toggleClearButton();
+      showSuggestions();
+      performSearch();
+    }
+    
+    // Event listeners
+    searchInput.addEventListener('input', refreshSearch);
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      refreshSearch();
+      searchInput.focus();
+    });
+    
+    // Voice search with fast response
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      voiceBtn.addEventListener('click', () => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.start();
+        voiceBtn.style.transform = 'scale(1.1)';
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          searchInput.value = transcript;
+          refreshSearch();
+          voiceBtn.style.transform = 'scale(1)';
+        };
+        recognition.onerror = () => { voiceBtn.style.transform = 'scale(1)'; };
+        recognition.onend = () => { voiceBtn.style.transform = 'scale(1)'; };
+      });
+    }
+    
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeFilter = pill.getAttribute('data-filter');
+        performSearch();
+      });
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!suggestionsContainer.contains(e.target) && e.target !== searchInput) {
+        suggestionsContainer.classList.remove('active');
+      }
+    });
+    
+    refreshSearch();
+  })();
+</script>
+</body>
+</html>
