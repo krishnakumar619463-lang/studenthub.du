@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Student Hub | Smart Resource Portal</title>
+  <title>Student Hub | Modern Resource Portal</title>
   <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,20 +16,20 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, #eff3f8 100%);
       color: #0f172a;
       line-height: 1.5;
       scroll-behavior: smooth;
     }
 
-    /* modern header with gradient */
+    /* Modern animated header */
     .main-header {
-      background: linear-gradient(135deg, #0a1c2a 0%, #0f2b3d 50%, #1a3a4f 100%);
-      padding: 1.5rem 2rem 1.8rem;
+      background: linear-gradient(135deg, #0a1f2e 0%, #0f2b3d 50%, #1a4a62 100%);
+      padding: 2rem 2rem 2.2rem;
       text-align: center;
-      border-bottom-left-radius: 2rem;
-      border-bottom-right-radius: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      border-bottom-left-radius: 2.5rem;
+      border-bottom-right-radius: 2.5rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
       position: relative;
       overflow: hidden;
     }
@@ -37,35 +37,81 @@
     .main-header::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(2,132,199,0.1) 0%, transparent 70%);
+      top: -30%;
+      right: -15%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
     }
 
+    .main-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(2,132,199,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-logo img {
+      height: 70px;
+      width: 70px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+      transition: transform 0.3s;
+    }
+
+    .header-logo img:hover {
+      transform: scale(1.05);
+    }
+
     .main-header h1 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #bae6fd);
+      background: linear-gradient(135deg, #ffffff, #bae6fd, #7dd3fc);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
     }
 
-    /* navigation */
+    .tagline {
+      color: #bae6fd;
+      margin-top: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* Glassmorphism navigation */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 2rem;
-      background: rgba(255,255,255,0.98);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -77,22 +123,22 @@
       align-items: center;
       gap: 12px;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: all 0.2s;
     }
 
     .logo:hover {
-      transform: scale(1.02);
+      transform: translateY(-2px);
     }
 
     .logo img {
-      height: 48px;
+      height: 44px;
       width: auto;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
     }
 
     .logo span {
-      font-weight: 700;
-      font-size: 1.3rem;
+      font-weight: 800;
+      font-size: 1.25rem;
       background: linear-gradient(135deg, #0284c7, #0f2b3d);
       -webkit-background-clip: text;
       background-clip: text;
@@ -120,13 +166,15 @@
       border-bottom-color: #0284c7;
     }
 
-    /* Enhanced Google-style search wrapper */
+    /* Modern search section */
     .search-section {
-      background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
-      padding: 2rem 1rem 1.8rem;
-      margin: 1rem 1.5rem 0.5rem;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      padding: 2rem 1.5rem;
+      margin: 1.5rem 1.5rem 0.5rem;
       border-radius: 2rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255,255,255,0.8);
     }
 
     .google-search-wrapper {
@@ -141,28 +189,22 @@
       align-items: center;
       background: white;
       border: 2px solid #e2e8f0;
-      border-radius: 56px;
-      padding: 6px 20px;
+      border-radius: 60px;
+      padding: 8px 20px;
       gap: 14px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
     .google-search-container:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       border-color: #cbd5e1;
     }
 
     .google-search-container:focus-within {
       border-color: #0284c7;
-      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.15);
-      transform: translateY(-1px);
-    }
-
-    .search-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 8px 28px rgba(2, 132, 199, 0.2);
+      transform: translateY(-2px);
     }
 
     .search-icon svg {
@@ -223,7 +265,7 @@
       background: #e2e8f0;
     }
 
-    /* Fast Search Suggestions */
+    /* Search suggestions */
     .search-suggestions {
       position: absolute;
       top: 100%;
@@ -231,13 +273,12 @@
       right: 0;
       background: white;
       border-radius: 24px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
       margin-top: 12px;
       z-index: 1001;
       max-height: 380px;
       overflow-y: auto;
       display: none;
-      backdrop-filter: blur(2px);
       border: 1px solid #eef2ff;
     }
 
@@ -247,14 +288,8 @@
     }
 
     @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .suggestion-item {
@@ -271,17 +306,7 @@
 
     .suggestion-item:hover {
       background: #f8fafc;
-      padding-left: 24px;
-    }
-
-    .suggestion-icon {
-      color: #0284c7;
-      font-size: 16px;
-    }
-
-    .suggestion-text {
-      flex: 1;
-      font-weight: 500;
+      padding-left: 26px;
     }
 
     .suggestion-category {
@@ -293,21 +318,21 @@
       font-weight: 600;
     }
 
-    /* filter pills - improved */
+    /* Filter pills - modern */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.8rem;
-      margin: 1.5rem auto 0.5rem;
-      max-width: 1000px;
+      margin: 1.8rem auto 1rem;
+      max-width: 1100px;
       padding: 0 1rem;
     }
 
     .filter-pill {
       background: white;
       border: 1px solid #e2e8f0;
-      padding: 0.6rem 1.4rem;
+      padding: 0.65rem 1.5rem;
       border-radius: 48px;
       font-weight: 600;
       font-size: 0.85rem;
@@ -328,47 +353,61 @@
       border-color: #0284c7;
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
     }
 
+    /* Results info */
     .results-info {
       max-width: 1200px;
       margin: 1.2rem auto 0;
       padding: 0 1.5rem;
-      font-size: 0.9rem;
-      color: #475569;
-      font-weight: 500;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .results-badge {
-      background: #e0f2fe;
-      padding: 4px 12px;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      color: #0284c7;
+    .stats-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #475569;
     }
 
-    /* resource grid - modern cards */
+    .results-badge {
+      background: linear-gradient(135deg, #0284c7, #0e6b9e);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Resource Grid - perfectly sized cards */
     .resources-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.8rem;
       max-width: 1400px;
       margin: 2rem auto;
       padding: 0 1.5rem;
     }
 
+    /* Modern card design with balanced sizing */
     .resource-card {
       background: white;
       border-radius: 1.5rem;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       border: 1px solid rgba(226, 232, 240, 0.8);
       overflow: hidden;
-      animation: fadeInUp 0.4s ease;
+      animation: fadeInUp 0.45s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     @keyframes fadeInUp {
@@ -383,8 +422,8 @@
     }
 
     .resource-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 40px -16px rgba(0, 0, 0, 0.18);
       border-color: #cbd5e1;
     }
 
@@ -398,19 +437,21 @@
     }
 
     .card-header i {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       color: #0284c7;
     }
 
     .card-header h2 {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 700;
       margin: 0;
       color: #0f172a;
+      line-height: 1.3;
     }
 
     .card-content {
       padding: 1.2rem 1.5rem 1.5rem;
+      flex: 1;
     }
 
     .card-content ol {
@@ -423,13 +464,32 @@
 
     .card-content li {
       font-size: 0.9rem;
-      padding: 0.45rem 0;
+      padding: 0.5rem 0;
       border-bottom: 1px solid #f1f5f9;
       display: flex;
       align-items: center;
       gap: 10px;
       color: #334155;
       font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .card-content li:hover {
+      padding-left: 8px;
+      color: #0284c7;
+    }
+
+    .card-content li a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .card-content li a:hover {
+      color: #0284c7;
     }
 
     .card-content li i {
@@ -451,18 +511,20 @@
     .no-results {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 3rem;
+      padding: 3.5rem;
       background: white;
       border-radius: 2rem;
       color: #475569;
       font-weight: 500;
+      font-size: 1.1rem;
     }
 
+    /* Footer */
     footer {
       background: #0f172a;
       color: #cbd5e1;
       padding: 2.5rem 2rem 1.8rem;
-      margin-top: 3rem;
+      margin-top: 3.5rem;
       border-top-left-radius: 2rem;
       border-top-right-radius: 2rem;
     }
@@ -491,7 +553,7 @@
 
     .social-icons a:hover {
       color: #ffffff;
-      transform: translateY(-3px) scale(1.1);
+      transform: translateY(-4px) scale(1.1);
     }
 
     .footer-contact {
@@ -499,11 +561,6 @@
       padding: 0.7rem 1.6rem;
       border-radius: 60px;
       font-size: 0.9rem;
-    }
-
-    .footer-contact i {
-      margin-right: 8px;
-      color: #60a5fa;
     }
 
     .footer-contact a {
@@ -520,25 +577,18 @@
 
     .about-section {
       max-width: 1000px;
-      margin: 0.5rem auto 0;
+      margin: 1rem auto 0;
       background: linear-gradient(135deg, #eef2ff, #ffffff);
-      border-radius: 1.8rem;
+      border-radius: 2rem;
       padding: 1.2rem 2rem;
       text-align: center;
       border: 1px solid #e0e7ff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
-    @media (max-width: 700px) {
-      nav { flex-direction: column; gap: 1rem; }
-      .resources-grid { padding: 0 1rem; gap: 1.2rem; }
-      .search-section { margin: 1rem 1rem; }
-      .filter-pill { padding: 0.4rem 1rem; font-size: 0.75rem; }
-    }
-
-    /* Loading animation for faster perception */
     .search-loading {
       position: absolute;
-      right: 80px;
+      right: 85px;
       top: 50%;
       transform: translateY(-50%);
       width: 20px;
@@ -553,18 +603,41 @@
     @keyframes spin {
       to { transform: translateY(-50%) rotate(360deg); }
     }
+
+    @media (max-width: 850px) {
+      .resources-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+      }
+      .card-header h2 { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { flex-direction: column; gap: 1rem; }
+      .resources-grid { padding: 0 1rem; gap: 1.2rem; }
+      .search-section { margin: 1rem; }
+      .filter-pill { padding: 0.45rem 1.1rem; font-size: 0.7rem; }
+      .main-header h1 { font-size: 1.8rem; }
+      .header-logo img { height: 50px; width: 50px; }
+    }
   </style>
 </head>
 <body>
 
 <div class="main-header">
-  <h1>🎓 Student Hub</h1>
-  <p style="color:#bae6fd; margin-top: 6px; font-weight: 500;">Delhi University — Instant access to syllabus, papers, notes & more</p>
+  <div class="header-content">
+    <div class="header-logo">
+      <img src="logo.svg" alt="Student Hub Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%230285c7\'/%3E%3Ctext x=\'50\' y=\'72\' font-size=\'44\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ESH%3C/text%3E%3C/svg%3E'">
+    </div>
+    <div>
+      <h1>Student Hub</h1>
+      <div class="tagline">Delhi University — Instant access to syllabus, papers, notes & more</div>
+    </div>
+  </div>
 </div>
 
 <nav>
   <div class="logo">
-    <!-- logo.svg integration - using external file logo.svg as requested -->
     <img src="logo.svg" alt="Student Hub Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'46\' fill=\'%230285c7\'/%3E%3Ctext x=\'50\' y=\'72\' font-size=\'44\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ESH%3C/text%3E%3C/svg%3E'">
     <span>StudyCentral</span>
   </div>
@@ -579,10 +652,9 @@
 </nav>
 
 <div class="about-section" id="About">
-  <p style="font-weight: 500;">🚀 Fast & smart search for question papers, notes, syllabus, assignments, scholarships — all resources at your fingertips.</p>
+  <p style="font-weight: 500;">🚀 Smart search for question papers, notes, syllabus, assignments, scholarships — all resources at your fingertips with modern design.</p>
 </div>
 
-<!-- Enhanced Google-Style Search Section -->
 <div class="search-section">
   <div class="google-search-wrapper">
     <div class="google-search-container">
@@ -611,9 +683,8 @@
   </div>
 </div>
 
-<!-- filter pills - improved categories -->
 <div class="filter-bar">
-  <button class="filter-pill active" data-filter="all"><i class="fas fa-globe"></i> All Resources</button>
+  <button class="filter-pill active" data-filter="all"><i class="fas fa-globe"></i> All</button>
   <button class="filter-pill" data-filter="pyq"><i class="fas fa-file-alt"></i> Question Papers</button>
   <button class="filter-pill" data-filter="notes"><i class="fas fa-pen-fancy"></i> Notes</button>
   <button class="filter-pill" data-filter="syllabus"><i class="fas fa-book-open"></i> Syllabus</button>
@@ -622,30 +693,31 @@
   <button class="filter-pill" data-filter="scholarship"><i class="fas fa-graduation-cap"></i> Scholarships</button>
 </div>
 
-<div class="results-info" id="resultsStats">
-  <i class="fas fa-bolt" style="color:#0284c7;"></i>
-  <span id="statText">⚡ Smart search active — type anything</span>
+<div class="results-info">
+  <div class="stats-left">
+    <i class="fas fa-bolt" style="color:#0284c7;"></i>
+    <span id="statText">✨ Smart search active</span>
+  </div>
   <span class="results-badge" id="resultCountBadge">0 resources</span>
 </div>
 
 <div class="resources-grid" id="resourceGrid"></div>
 
-<!-- Original content backup (preserved) -->
 <div id="originalContentBackup" style="display: none;">
   <div class="pyq">
     <h2>Previous Year's Question papers</h2><br><h3>Subjects</h3>
-    <h4>Physics (Electricity and Magnetism)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>Mathematics (Elementary Linear Algebra)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li><li>Paper 7</li><li>Paper 8</li></ol>
-    <h4>Computer (Data Structure using C++)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>GE (Individual and Society)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li><li>Paper 7</li><li>Paper 8</li><li>Paper 9</li></ol>
-    <h4>VAC (Vedic Mathematics-2)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 3</li><li>Paper 4</li><li>Paper 5</li><li>Paper 6</li></ol>
-    <h4>AEC (Hindi-A)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>AEC (Hindi-B)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>SEC (Chemistry Lab)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>GE (Introduction of Indian Constitution)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>VAC (Science and Society)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>VAC (Digital Empowerment)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
-    <h4>AEC (Hindi-C)</h4><ol><li>Paper 1</li><li>Paper 2</li><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>Physics (Electricity and Magnetism)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li></ol>
+    <h4>Mathematics (Elementary Linear Algebra)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li><li><a href="#">Paper 3</a></li><li><a href="#">Paper 4</a></li><li><a href="#">Paper 5</a></li><li><a href="#">Paper 6</a></li><li><a href="#">Paper 7</a></li><li><a href="#">Paper 8</a></li></ol>
+    <h4>Computer (Data Structure using C++)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li></ol>
+    <h4>GE (Individual and Society)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li><li><a href="#">Paper 3</a></li><li><a href="#">Paper 4</a></li><li><a href="#">Paper 5</a></li><li><a href="#">Paper 6</a></li><li><a href="#">Paper 7</a></li><li><a href="#">Paper 8</a></li><li><a href="#">Paper 9</a></li></ol>
+    <h4>VAC (Vedic Mathematics-2)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li><li><a href="#">Paper 3</a></li><li><a href="#">Paper 4</a></li><li><a href="#">Paper 5</a></li><li><a href="#">Paper 6</a></li></ol>
+    <h4>AEC (Hindi-A)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li></ol>
+    <h4>AEC (Hindi-B)</h4><ol><li><a href="#">Paper 1</a></li><li><a href="#">Paper 2</a></li></ol>
+    <h4>SEC (Chemistry Lab)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>GE (Introduction of Indian Constitution)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>VAC (Science and Society)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>VAC (Digital Empowerment)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
+    <h4>AEC (Hindi-C)</h4><ol><li>Paper 1</li><li>Paper 2</li></ol>
   </div>
   <div class="notes"><h2>Notes</h2><ol><li>Mathematics</li><li>Physics</li><li>VAC</li><li>Hindi</li><li>Computer</li></ol></div>
   <div class="syllabus"><h2>Syllabus</h2><ol><li>Mathematics (Elementary Linear Algebra)</li><li>Physics (Electricity and Magnetism)</li><li>VAC (Vedic Mathematics-2)</li><li>Hindi-A</li><li>Computer (Data structure using C++)</li><li>GE (Individual and Society)</li><li>SEC (Chemistry Lab)</li></ol></div>
@@ -677,22 +749,21 @@
 
 <script>
   (function() {
-    // FAST & ACCURATE SEARCH ENGINE with precomputed index
     const backupDiv = document.getElementById('originalContentBackup');
     const gridContainer = document.getElementById('resourceGrid');
     const categoryMap = [
-      { class: 'pyq', category: 'pyq', icon: 'fas fa-file-alt', displayName: 'Question Papers' },
-      { class: 'notes', category: 'notes', icon: 'fas fa-pen-fancy', displayName: 'Notes' },
-      { class: 'syllabus', category: 'syllabus', icon: 'fas fa-list-ul', displayName: 'Syllabus' },
-      { class: 'books', category: 'books', icon: 'fas fa-book', displayName: 'Books' },
-      { class: 'asignment', category: 'assignment', icon: 'fas fa-tasks', displayName: 'Assignments' },
-      { class: 'scholarship', category: 'scholarship', icon: 'fas fa-graduation-cap', displayName: 'Scholarships' }
+      { class: 'pyq', category: 'pyq', icon: 'fas fa-file-alt' },
+      { class: 'notes', category: 'notes', icon: 'fas fa-pen-fancy' },
+      { class: 'syllabus', category: 'syllabus', icon: 'fas fa-list-ul' },
+      { class: 'books', category: 'books', icon: 'fas fa-book' },
+      { class: 'asignment', category: 'assignment', icon: 'fas fa-tasks' },
+      { class: 'scholarship', category: 'scholarship', icon: 'fas fa-graduation-cap' }
     ];
     
     let allCards = [];
-    let searchIndex = []; // precomputed searchable text for blazing fast search
+    let searchIndex = [];
     
-    function buildCard(originalElem, categoryId, iconClass, displayName) {
+    function buildCard(originalElem, categoryId, iconClass) {
       const clone = originalElem.cloneNode(true);
       clone.setAttribute('data-category', categoryId);
       clone.classList.add('resource-card');
@@ -723,7 +794,6 @@
       }
       clone.appendChild(contentWrapper);
       
-      // Style lists for better UX
       clone.querySelectorAll('.card-content ol').forEach(ol => {
         ol.style.listStyle = 'none';
         ol.style.paddingLeft = '0';
@@ -735,7 +805,7 @@
           li.style.alignItems = 'center';
           li.style.gap = '8px';
           li.style.borderBottom = '1px solid #f1f5f9';
-          li.style.padding = '0.4rem 0';
+          li.style.padding = '0.45rem 0';
           if (!li.querySelector('i.li-icon')) {
             const liIcon = document.createElement('i');
             liIcon.className = 'fas fa-chevron-right li-icon';
@@ -748,20 +818,16 @@
       return clone;
     }
     
-    // Build cards and precompute search index for O(1) lookups
-    categoryMap.forEach(({ class: className, category, icon, displayName }) => {
+    categoryMap.forEach(({ class: className, category, icon }) => {
       const originalElem = backupDiv.querySelector(`.${className}`);
       if (originalElem) {
-        const card = buildCard(originalElem, category, icon, displayName);
+        const card = buildCard(originalElem, category, icon);
         gridContainer.appendChild(card);
         allCards.push(card);
-        // Precompute searchable text (full content lowercase)
-        const searchableText = card.textContent.toLowerCase();
-        searchIndex.push({ card, searchableText, category });
+        searchIndex.push({ card, searchableText: card.textContent.toLowerCase(), category });
       }
     });
     
-    // DOM elements
     const searchInput = document.getElementById('googleSearchInput');
     const clearBtn = document.getElementById('clearGoogleSearch');
     const voiceBtn = document.getElementById('voiceGoogleSearch');
@@ -772,77 +838,62 @@
     let currentSearch = '';
     let searchTimeout = null;
     
-    // Smart suggestion database (accurate & fast)
     const smartSuggestions = [
       { text: "Physics Electricity and Magnetism", category: "Question Papers" },
       { text: "Mathematics Linear Algebra notes", category: "Notes" },
       { text: "Elementary Linear Algebra syllabus", category: "Syllabus" },
       { text: "Data Structure C++ assignments", category: "Assignments" },
       { text: "Vedic Mathematics previous papers", category: "Question Papers" },
-      { text: "NSP Scholarship application", category: "Scholarship" },
-      { text: "Chemistry Lab syllabus DU", category: "Syllabus" },
-      { text: "Hindi AEC question papers", category: "Question Papers" },
-      { text: "Computer Science notes", category: "Notes" },
-      { text: "PM Vidylaxmi education loan", category: "Scholarship" },
-      { text: "Digital Empowerment VAC notes", category: "Notes" },
-      { text: "GE Individual and Society papers", category: "Question Papers" }
+      { text: "NSP Scholarship application", category: "Scholarship" }
     ];
     
     function toggleClearButton() {
       clearBtn.style.display = currentSearch.length > 0 ? 'flex' : 'none';
     }
     
-    // Ultra-fast search using precomputed index
     function performSearch() {
       if (searchTimeout) clearTimeout(searchTimeout);
       loadingIndicator.style.display = 'block';
-      
       searchTimeout = setTimeout(() => {
         const searchTermLower = currentSearch.toLowerCase().trim();
         let visibleCount = 0;
-        
         searchIndex.forEach(({ card, searchableText, category }) => {
           const matchesFilter = (activeFilter === 'all') || (category === activeFilter);
           let matchesSearch = true;
           if (searchTermLower !== '') {
-            // Fast includes check + word boundary awareness for accuracy
             matchesSearch = searchableText.includes(searchTermLower);
-            // Extra accuracy: check if term matches as whole word context
             if (!matchesSearch && searchTermLower.length > 2) {
               const words = searchTermLower.split(/\s+/);
               matchesSearch = words.some(word => word.length > 2 && searchableText.includes(word));
             }
           }
-          
           if (matchesFilter && matchesSearch) {
             card.style.display = '';
             visibleCount++;
-            highlightSearchInCard(card, currentSearch);
+            highlightInCard(card, currentSearch);
           } else {
             card.style.display = 'none';
-            removeHighlightsFromCard(card);
+            removeHighlights(card);
           }
         });
-        
-        // Update stats UI
-        const statTextSpan = document.getElementById('statText');
+        const statSpan = document.getElementById('statText');
         const badgeSpan = document.getElementById('resultCountBadge');
         if (visibleCount === 0 && currentSearch !== '') {
-          statTextSpan.innerHTML = '🔍 No matches — try "Physics", "NSP", "syllabus", or "notes"';
+          statSpan.innerHTML = '🔍 No matches — try "Physics", "NSP", "syllabus"';
           badgeSpan.textContent = '0 found';
         } else if (currentSearch === '') {
-          statTextSpan.innerHTML = '⚡ All resources ready — start searching';
+          statSpan.innerHTML = '⚡ All resources ready — start searching';
           badgeSpan.textContent = `${visibleCount} total`;
         } else {
-          statTextSpan.innerHTML = `🎯 Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''} for “${currentSearch}”`;
+          statSpan.innerHTML = `🎯 Found ${visibleCount} result${visibleCount !== 1 ? 's' : ''} for “${currentSearch}”`;
           badgeSpan.textContent = `${visibleCount} matches`;
         }
         loadingIndicator.style.display = 'none';
-      }, 80); // 80ms debounce for instant feel
+      }, 60);
     }
     
-    function highlightSearchInCard(card, term) {
-      removeHighlightsFromCard(card);
+    function highlightInCard(card, term) {
+      removeHighlights(card);
       if (!term.trim()) return;
       const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
       const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT, {
@@ -862,7 +913,7 @@
       });
     }
     
-    function removeHighlightsFromCard(card) {
+    function removeHighlights(card) {
       card.querySelectorAll('.highlight').forEach(el => {
         const parent = el.parentNode;
         parent.replaceChild(document.createTextNode(el.textContent), el);
@@ -872,15 +923,9 @@
     
     function showSuggestions() {
       const query = currentSearch.toLowerCase().trim();
-      if (query === '') {
-        suggestionsContainer.classList.remove('active');
-        return;
-      }
+      if (query === '') { suggestionsContainer.classList.remove('active'); return; }
       const filtered = smartSuggestions.filter(s => s.text.toLowerCase().includes(query)).slice(0, 6);
-      if (filtered.length === 0) {
-        suggestionsContainer.classList.remove('active');
-        return;
-      }
+      if (filtered.length === 0) { suggestionsContainer.classList.remove('active'); return; }
       suggestionsContainer.innerHTML = filtered.map(item => `
         <div class="suggestion-item" data-value="${escapeHtml(item.text)}">
           <div class="suggestion-icon"><i class="fas fa-search"></i></div>
@@ -913,7 +958,6 @@
       performSearch();
     }
     
-    // Event listeners
     searchInput.addEventListener('input', refreshSearch);
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
@@ -921,23 +965,19 @@
       searchInput.focus();
     });
     
-    // Voice search with fast response
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
       voiceBtn.addEventListener('click', () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
         recognition.lang = 'en-US';
-        recognition.interimResults = false;
         recognition.start();
         voiceBtn.style.transform = 'scale(1.1)';
         recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          searchInput.value = transcript;
+          searchInput.value = event.results[0][0].transcript;
           refreshSearch();
           voiceBtn.style.transform = 'scale(1)';
         };
-        recognition.onerror = () => { voiceBtn.style.transform = 'scale(1)'; };
-        recognition.onend = () => { voiceBtn.style.transform = 'scale(1)'; };
+        recognition.onend = () => voiceBtn.style.transform = 'scale(1)';
       });
     }
     
